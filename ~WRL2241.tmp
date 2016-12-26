@@ -3,7 +3,6 @@
 Project is required to implement a system to find the n most popular hashtags appeared on social media such as Facebook or Twitter. Basic idea for the implementation is to use a max priority structure to find out the most popular hashtags. Project is required to use two data structures for the implementation: Max Fibonacci heap to keep track of the frequencies of hashtags and Hash table to store hashtag and pointer to the corresponding node. The input file will have large number of hashtags and may need to perform increase key functionality many times. 
 
 
-
                               COMPILING INSTRUCTIONS
 
 • The project has been compiled and tested on thunder.cise.ufl.edu, on local terminal and on Eclipse Kepler. 
@@ -14,8 +13,6 @@ o java  hashtagcounter file_name
 • Commands to execute the program with the given input file 
 o Java hashtagcounter millionRecords.txt 
 o Java hashtagcounter sample_input1.txt
-
-
 
 
 
@@ -35,8 +32,6 @@ Function Methods:
 * @author Maulik_Lalani
 * @param data
 */
-
-
 a) public Fibonacci_Heap_Node(int data ) 
 	This constructor initializes all the fields of the node and initializes data field with the passed parameter.
 
@@ -52,8 +47,6 @@ This class contains the main method and it initializes the Hash table used to st
 Function methods:
 a)public static void main(String args[]);
 This is the main method and code begins from this method. This method initializes buffer reader and writer to read and write data to the output method. This method also calls either insertHashtag() or executeQuery() based on the input.
-
-
 /**
 * This method calls the insert methods of Heap_Methods class based on new *insert or update.
 * @author Maulik_Lalani
@@ -62,7 +55,6 @@ This is the main method and code begins from this method. This method initialize
 */
 b) public static void insertHashtag(String hashtag, int frequency);
 This method creates the new node with the given frequency if hashtag is not present and calls insertNewNode() method to insert into the heap. If hashtag is present than it calls increaseKey() method which updates the frequency.
-
 
 /**
 * This method fetches the query results and remove nodes from the heap and  then reinserts all the nodes.
@@ -111,7 +103,6 @@ This method insert the new node as the right sibling of heap pointer and updates
 b) public Fibonacci_Heap_Node removeMax();
 This method removes the heap pointer node from the heap and creates one array which has all the siblings of heap pointer and children of the heap pointer and passes it to meldTrees() to reconstruct the tree with all the nodes.
 
-
 /**
 * This method iterates through the list of root nodes and calls pairwiseCombine() method to merge nodes based on the degree 
 * @author Maulik_Lalani
@@ -120,7 +111,6 @@ This method removes the heap pointer node from the heap and creates one array wh
 */
 c) public void meldTrees(ArrayList<Fibonacci_Heap_Node> rootNodes);
 This method creates table which contains node and its degrees. Then it iterates through all the nodes and put it in table. If node degree is already present then the node is taken out of the table and pairwiseCombine() method is called which combines two nodes. Once we get all the unique degree nodes, mergeNode() method is called to merge all the nodes one by one.
-
 
 /**
 * This method combines two root nodes based on the frequency and make small node the child of the large node.
@@ -131,7 +121,6 @@ This method creates table which contains node and its degrees. Then it iterates 
 */
 d) 	public Fibonacci_Heap_Node pairwiseCombine(Fibonacci_Heap_Node largeNode, Fibonacci_Heap_Node smallNode);
 This method is called when we have two nodes with the same degree and it merges both the nodes based on the frequency. Smaller node is made the child of the parent.	
-
 /** This method assigns appropriate right and left child of the newly created root node
 * @author Maulik_Lalani
 * @param newNode
@@ -139,7 +128,6 @@ This method is called when we have two nodes with the same degree and it merges 
 */
 e) public Fibonacci_Heap_Node mergeAllNodes(Fibonacci_Heap_Node newNode);
 This method is called after creating unique degree root nodes and this method assigns right and left sibling pointers to all the nodes. Finally, it creates max Fibonacci heap.
-
 
 /**
 * This method updates the frequency of a hashtag, removes it from the tree if it is greater than parent and inserts it at the top.
