@@ -31,6 +31,8 @@ There are three classes used to implement the project. Following is the short de
 1) Fibonacci_Heap_Node.java 
 This class contains the structure of the Fibonacci heap and one constructor to initialize the node. Single node of the Fibonacci heap contains following fields: 
       Child, Parent, Right_sibling, Left_sibling, data, Degree and ChildCut.
+      
+      
 Function Methods: 
 /**
 * This constructor initializes node fields and assigns data.
@@ -50,6 +52,8 @@ a) public Fibonacci_Heap_Node(int data )
 
 2) Hashtagcounter.java
 This class contains the main method and it initializes the Hash table used to store the hashtags.
+
+
 Function methods:
 a)public static void main(String args[]);
 This is the main method and code begins from this method. This method initializes buffer reader and writer to read and write data to the output method. This method also calls either insertHashtag() or executeQuery() based on the input.
@@ -66,6 +70,7 @@ b) public static void insertHashtag(String hashtag, int frequency);
 This method creates the new node with the given frequency if hashtag is not present and calls insertNewNode() method to insert into the heap. If hashtag is present than it calls increaseKey() method which updates the frequency.
 
 
+
 /**
 * This method fetches the query results and remove nodes from the heap and  then reinserts all the nodes.
 * @author Maulik_Lalani
@@ -74,6 +79,7 @@ This method creates the new node with the given frequency if hashtag is not pres
 
 c) public static void executeQueries(int query);
 This method takes query as an argument and removes maximum nodes and calls writeToOutputFile() which writes the output data and then reinserts all the nodes using insertHashtag().
+
 
 /**
 * This method writes the one query result to the output file.
@@ -84,8 +90,11 @@ This method takes query as an argument and removes maximum nodes and calls write
 d)public static void writeToOutputFile (LinkedHashMap<String,Fibonacci_Heap_Node> queryResult);
 This method writes the data to output file.
 
+
 3)Heap_Methods.java
 This class contains all the methods that perform increase, remove and update operations.
+
+
 	
 Function methods:
 
@@ -116,6 +125,7 @@ b) public Fibonacci_Heap_Node removeMax();
 This method removes the heap pointer node from the heap and creates one array which has all the siblings of heap pointer and children of the heap pointer and passes it to meldTrees() to reconstruct the tree with all the nodes.
 
 
+
 /**
 * This method iterates through the list of root nodes and calls pairwiseCombine() method to merge nodes based on the degree 
 * @author Maulik_Lalani
@@ -125,6 +135,7 @@ This method removes the heap pointer node from the heap and creates one array wh
 
 c) public void meldTrees(ArrayList<Fibonacci_Heap_Node> rootNodes);
 This method creates table which contains node and its degrees. Then it iterates through all the nodes and put it in table. If node degree is already present then the node is taken out of the table and pairwiseCombine() method is called which combines two nodes. Once we get all the unique degree nodes, mergeNode() method is called to merge all the nodes one by one.
+
 
 
 /**
@@ -138,6 +149,7 @@ This method creates table which contains node and its degrees. Then it iterates 
 d) 	public Fibonacci_Heap_Node pairwiseCombine(Fibonacci_Heap_Node largeNode, Fibonacci_Heap_Node smallNode);
 This method is called when we have two nodes with the same degree and it merges both the nodes based on the frequency. Smaller node is made the child of the parent.	
 
+
 /** This method assigns appropriate right and left child of the newly created root node
 * @author Maulik_Lalani
 * @param newNode
@@ -146,6 +158,7 @@ This method is called when we have two nodes with the same degree and it merges 
 
 e) public Fibonacci_Heap_Node mergeAllNodes(Fibonacci_Heap_Node newNode);
 This method is called after creating unique degree root nodes and this method assigns right and left sibling pointers to all the nodes. Finally, it creates max Fibonacci heap.
+
 
 
 /**
